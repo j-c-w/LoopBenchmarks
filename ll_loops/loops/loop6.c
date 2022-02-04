@@ -1,4 +1,4 @@
-void loop6(int loop, int n, double *w, double **b, double *w) {
+void loop6(int loop, int n, double *w, double **b) {
 	int l, k, i;
     for ( l=1 ; l<=loop ; l++ ) {
         for ( i=1 ; i<n ; i++ ) {

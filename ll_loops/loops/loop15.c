@@ -1,6 +1,8 @@
-void loop(int loop, double *vxne, double *ve3, double *vxnd) {
+void loop(int loop, double *vxne, double *ve3, double *vxnd, double *vlr, double *vstp, double *vsp, double *vlin) {
 	int l, j, i, ink;
 	double scale, snm, e6;
+	double xnm, e3, xnei, xnc;
+	int n;
 	// Not clear that this loop can be supported?  Odd iteration
 	// indexes.
     for ( l=1 ; l<=loop ; l++ ) {

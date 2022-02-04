@@ -1,4 +1,4 @@
-void loop(int loop, int n, int **p, int *y, int *z, int *e, int *f, double **h) {
+void loop(int loop, int n, int **p, int *y, int *z, int *e, int *f, double **h, double **c, double **b) {
 	int l, ip, i1, j1, i2, j2;
     for ( l=1 ; l<=loop ; l++ ) {
         for ( ip=0 ; ip<n ; ip++ ) {

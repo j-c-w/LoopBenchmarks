@@ -1,4 +1,5 @@
-void loop(int loop, int n, double **px, double dm28, double dm27, double dm26, double dm25, double dm24, double dm23, double dm22 double x0) {
+void loop(int loop, int n, double **px, double dm28, double dm27, double dm26, double dm25, double dm24, double dm23, double dm22, double x0, double c0) {
+	int l, i;
     for ( l=1 ; l<=loop ; l++ ) {
         for ( i=0 ; i<n ; i++ ) {
             px[i][0] = dm28*px[i][12] + dm27*px[i][11] + dm26*px[i][10] +

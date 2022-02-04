@@ -1,3 +1,5 @@
+#include <stdint.h>
+
 typedef uint64_t uint64;
 typedef int64_t int64;
 

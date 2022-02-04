@@ -1,5 +1,6 @@
-void loop( ) {
-	TODO
+void loop(int loop, int n, double **zp, double **zq, double **zm, double **zr, double **am, double **za, double **zz, double **zb, double **zu, double **zv) {
+	double s, t;
+	int l, k, j, jn, kn;
     for ( l=1 ; l<=loop ; l++ ) {
         t = 0.0037;
         s = 0.0041;

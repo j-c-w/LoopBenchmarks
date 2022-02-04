@@ -1,4 +1,4 @@
-void (int loop, int n, double *z, double *x) {
+void loop(int loop, int n, double *z, double *x) {
 	double q;
 	int l, k;
     for ( l=1 ; l<=loop ; l++ ) {

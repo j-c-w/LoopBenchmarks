@@ -1,6 +1,7 @@
-void loop(int loop, double *x, double *v, double) {
-	int l, k, ii;
+void loop(int loop, int n, double *x, double *v) {
+	int l, k, ii, i;
 	int ipntp;
+	int ipnt;
     for ( l=1 ; l<=loop ; l++ ) {
         ii = n;
         ipntp = 0;

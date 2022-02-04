@@ -1,4 +1,4 @@
-void loop (int loop, int n, double *vx, double *xx, double *ix, double * xi, double *ex1, double *dex1, double *ir, double *rx, double *rh) {
+void loop (int loop, int n, double *vx, double *xx, long *ix, double * xi, double *ex1, double *dex1, double *dex, int *ir, double *rx, double *rh, double flx, double *ex, long *grd) {
 	int l, k;
 	// TODO -- should these be broken up into separate loops?
     for ( l=1 ; l<=loop ; l++ ) {

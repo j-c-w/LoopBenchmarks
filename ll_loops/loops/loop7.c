@@ -1,4 +1,4 @@
-void loop(int loop, int n, double *x, double *u, double r, double *z, double *y) {
+void loop(int loop, int n, double *x, double *u, double r, double *z, double *y, double t) {
 	int l, k;
     for ( l=1 ; l<=loop ; l++ ) {
 #pragma nohazard

@@ -1,4 +1,4 @@
-void loop(int loop, int n, double *du1, double *du2, double *du3, double ***u1, double ***u2, double ***u3) {
+void loop(int loop, int n, double *du1, double *du2, double *du3, double ***u1, double ***u2, double ***u3, double a31, double a32, double a33, double a13, double a12, double a11, double a21, double a22, double a23, double sig) {
 	int l, kx, ky;
 	int nl1, nl2;
     for ( l=1 ; l<=loop ; l++ ) {
