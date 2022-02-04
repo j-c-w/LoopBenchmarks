@@ -1,3 +1,5 @@
+#include<stdint.h>
+
 #define ROTL32(n,x) (((x)<<(n)) | ((x)>>((-(n)&31))))
 
 #define SHA256_DATA_LENGTH 16

@@ -36,7 +36,7 @@ subAndClamp (uint8 a, int16 b)
 }
 
 static void
-convertCb (uint8 dstOfs)
+loop (uint8* gMCUBufG, uint8* gMCUBufB, int16 *gCoeffBuf, uint8 dstOfs)
 {
   uint8 i;
   uint8 *pDstG = gMCUBufG + dstOfs;

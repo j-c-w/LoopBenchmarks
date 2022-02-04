@@ -37,7 +37,7 @@ subAndClamp (uint8 a, int16 b)
 
 
 static void
-loop (uint8 srcOfs, uint8 dstOfs)
+loop (uint8* gMCUBufG, uint8* gMCUBufR, int16 *gCoeffBuf, uint8 srcOfs, uint8 dstOfs)
 {
   // Cr - affects R and G
   uint8 x, y;

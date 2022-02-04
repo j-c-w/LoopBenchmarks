@@ -1,5 +1,5 @@
 int
-benchmark_body (int rpt)
+benchmark_body (int rpt, double **a, double *b)
 {
   int  k;
 

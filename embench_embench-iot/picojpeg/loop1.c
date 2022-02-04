@@ -3,61 +3,57 @@ typedef unsigned short uint16;
 typedef signed char int8;
 typedef signed short int16;
 
-typedef struct HuffTableT
-{
-  uint16 mMinCode[16];
-  uint16 mMaxCode[16];
-  uint8 mValPtr[16];
-} HuffTable;
-
-//------------------------------------------------------------------------------
 static uint8
-getBit (void)
+addAndClamp (uint8 a, int16 b)
 {
-  uint8 ret = 0;
-  if (gBitBuf & 0x8000)
-    ret = 1;
+  b = a + b;
 
-  if (!gBitsLeft)
+  if ((uint16) b > 255U)
     {
-      gBitBuf |= getOctet (1);
-
-      gBitsLeft += 8;
+      if (b < 0)
+	return 0;
+      else if (b > 255)
+	return 255;
     }
 
-  gBitsLeft--;
-  gBitBuf <<= 1;
-
-  return ret;
+  return (uint8) b;
 }
 
-// Unclear whether this loop is runnable on a typical CGRA.
-void
-loop (const HuffTable * pHuffTable, const uint8 * pHuffVal)
+uint8
+subAndClamp (uint8 a, int16 b)
 {
-  uint8 i = 0;
-  uint8 j;
-  uint16 code = getBit ();
+  b = a - b;
 
-  // This func only reads a bit at a time, which on modern CPU's is not terribly efficient.
-  // But on microcontrollers without strong integer shifting support this seems like a
-  // more reasonable approach.
-  for (;;)
+  if ((uint16) b > 255U)
     {
-      uint16 maxCode;
-
-      if (i == 16)
+      if (b < 0)
 	return 0;
-
-      maxCode = pHuffTable->mMaxCode[i];
-      if ((code <= maxCode) && (maxCode != 0xFFFF))
-	break;
-
-      i++;
-      code <<= 1;
-      code |= getBit ();
+      else if (b > 255)
+	return 255;
     }
 
-  j = pHuffTable->mValPtr[i];
-  j = (uint8) (j + (code - pHuffTable->mMinCode[i]));
+  return (uint8) b;
+}
+
+static void
+loop (int16* gCoeffBuf, uint8* gMCUBufR, uint8* gMCUBufG, int16*pSRC, uint8 dstOfs)
+{
+  uint8 i;
+  uint8 *pDstR = gMCUBufR + dstOfs;
+  uint8 *pDstG = gMCUBufG + dstOfs;
+  int16 *pSrc = gCoeffBuf;
+
+  for (i = 64; i > 0; i--)
+    {
+      uint8 cr = (uint8) * pSrc++;
+      int16 crR, crG;
+
+      crR = (cr + ((cr * 103U) >> 8U)) - 179;
+      *pDstR = addAndClamp (pDstR[0], crR);
+      pDstR++;
+
+      crG = ((cr * 183U) >> 8U) - 91;
+      *pDstG = subAndClamp (pDstG[0], crG);
+      pDstG++;
+    }
 }

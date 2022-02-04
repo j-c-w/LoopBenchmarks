@@ -1,8 +1,9 @@
 #include <stdlib.h>
+#include <stdint.h>
 
 #define LEFTROTATE(x, c) (((x) << (c)) | ((x) >> (32 - (c))))
 
-void loop(int new_len, uint32_t *msg) {
+void loop(int new_len, uint32_t *msg, uint32_t h0, uint32_t h1, uint32_t h2, uint32_t h3, uint32_t *k, uint32_t *r) {
     int offset;
     for(offset=0; offset<new_len; offset += (512/8)) {
 

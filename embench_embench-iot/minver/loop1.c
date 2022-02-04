@@ -1,5 +1,5 @@
 int
-loop (int row_a, int col_a, int row_b, int col_b)
+loop (int row_a, int col_a, int row_b, int col_b, double **c, double **b, double **a)
 {
   int i, j, k, row_c, col_c;
   float w;

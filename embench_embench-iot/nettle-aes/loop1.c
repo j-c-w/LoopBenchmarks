@@ -1,3 +1,13 @@
+#include<stdint.h>
+
+#define AES_TABLE_SIZE 4
+
+struct aes_table                                                    
+{
+	uint8_t sbox[0x100];
+	uint32_t table[AES_TABLE_SIZE][0x100];
+};
+
 static const struct aes_table _aes_decrypt_table = {	/* isbox */
   {
    0x52, 0x09, 0x6a, 0xd5, 0x30, 0x36, 0xa5, 0x38,

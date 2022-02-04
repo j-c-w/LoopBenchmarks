@@ -36,7 +36,7 @@ subAndClamp (uint8 a, int16 b)
 }
 
 static void
-upsampleCb (uint8 srcOfs, uint8 dstOfs)
+loop (uint8* gMCUBufG, uint8* gMCUBufB, int16 *gCoeffBuf, uint8 srcOfs, uint8 dstOfs)
 {
   // Cb - affects G and B
   uint8 x, y;
